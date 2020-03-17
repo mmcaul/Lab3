@@ -1,8 +1,13 @@
-package framework;
+package framework.Controller;
+
+import framework.Commands.Memento;
+import framework.Model.ImageModel;
 
 import javax.swing.*;
 
 public class CommandController {
+
+    Memento memento;
 
     // Singleton
     private static CommandController instance = new CommandController();
@@ -27,20 +32,12 @@ public class CommandController {
 
     }
 
-    public void handleZoom(){
-
+    public Memento save(){
+        return memento;
     }
 
-    public void handleMove(){
-
-    }
-
-    public void handleUndo(){
-
-    }
-
-    public void handleSave(){
-
+    public void restore(Memento m){
+        this.memento = m;
     }
 
 }

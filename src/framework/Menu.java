@@ -1,5 +1,8 @@
 package framework;
 
+import framework.Commands.UndoCommand;
+import framework.Controller.CommandController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -81,9 +84,8 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                UndoCommand undoCommand = new UndoCommand();
-
-
+                UndoCommand undoCommand = new UndoCommand(commandController);
+                undoCommand.handle();
             }
         }
 

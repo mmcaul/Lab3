@@ -1,4 +1,4 @@
-package framework;
+package framework.Commands;
 
 public interface Command {
 

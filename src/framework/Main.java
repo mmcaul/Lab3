@@ -1,5 +1,7 @@
 package framework;
 
+import framework.Controller.CommandController;
+
 import javax.swing.*;
 import java.awt.*;
 
