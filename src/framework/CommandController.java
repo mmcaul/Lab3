@@ -1,14 +1,13 @@
 package framework;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
-public class ImageController {
+public class CommandController {
 
     // Singleton
-    private static ImageController instance = new ImageController();
-    private ImageController(){};
-    public static ImageController getInstance(){
+    private static CommandController instance = new CommandController();
+    private CommandController(){};
+    public static CommandController getInstance(){
         return instance;
     }
 

@@ -22,8 +22,8 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ImageController imageController = ImageController.getInstance();
-                imageController.handleOpen();
+                CommandController commandController = CommandController.getInstance();
+                commandController.handleOpen();
             }
         }
 
@@ -34,8 +34,8 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageController imageController = ImageController.getInstance();
-                imageController.handleSave();
+                CommandController commandController = CommandController.getInstance();
+                commandController.handleSave();
             }
         }
         itemSave.addActionListener(new SaveMenuListener());
@@ -57,20 +57,20 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ImageController imageController = ImageController.getInstance();
-                imageController.handleZoom();
+                CommandController commandController = CommandController.getInstance();
+                commandController.handleZoom();
             }
         }
 
         itemZoom.addActionListener(new ZoomMenuListener());
 
-        // Action Listener pour faire translater l'image
+        // Action Listener pour faire bouger l'image sur l'écran
         class MoveMenuListener implements ActionListener{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageController imageController = ImageController.getInstance();
-                imageController.handleMove();
+                CommandController commandController = CommandController.getInstance();
+                commandController.handleMove();
             }
         }
         itemMove.addActionListener(new MoveMenuListener());
@@ -80,10 +80,13 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageController imageController = ImageController.getInstance();
-                imageController.handleUndo();
+                CommandController commandController = CommandController.getInstance();
+                UndoCommand undoCommand = new UndoCommand();
+
+
             }
         }
+
         itemMove.addActionListener(new UndoMenuListener());
 
         menu.add(itemZoom);
@@ -93,8 +96,5 @@ public class Menu extends JMenuBar {
         add(menu);
 
     }
-
-
-
 
 }
