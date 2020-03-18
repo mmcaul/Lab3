@@ -1,6 +1,5 @@
 package framework;
 
-import framework.Commands.UndoCommand;
 import framework.Controller.CommandController;
 
 import javax.swing.*;
@@ -26,7 +25,7 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
 
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleOpen();
+                commandController.handle();
             }
         }
 
@@ -38,7 +37,6 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleSave();
             }
         }
         itemSave.addActionListener(new SaveMenuListener());
@@ -61,7 +59,7 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
 
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleZoom();
+                commandController.handle();
             }
         }
 
@@ -73,7 +71,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleMove();
+                commandController.handle();
             }
         }
         itemMove.addActionListener(new MoveMenuListener());
@@ -84,8 +82,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                UndoCommand undoCommand = new UndoCommand(commandController);
-                undoCommand.handle();
+                commandController.handle();
             }
         }
 

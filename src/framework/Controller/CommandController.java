@@ -1,5 +1,6 @@
 package framework.Controller;
 
+import framework.Commands.Command;
 import framework.Commands.Memento;
 import framework.Model.ImageModel;
 
@@ -8,6 +9,7 @@ import javax.swing.*;
 public class CommandController {
 
     Memento memento;
+    Command command;
 
     // Singleton
     private static CommandController instance = new CommandController();
@@ -20,16 +22,16 @@ public class CommandController {
     ImageModel image;
     JFrame view;
 
+    public void handle(){
+        command.handle();
+    }
+
     public void setView(JFrame view) {
         this.view = view;
     }
 
     public void setImage(ImageModel image) {
         this.image = image;
-    }
-
-    public void handleOpen(){
-
     }
 
     public Memento save(){
