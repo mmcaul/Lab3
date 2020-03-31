@@ -1,16 +1,15 @@
 package framework.Commands;
 
-import framework.Commands.Command;
-import framework.Controller.CommandController;
+import framework.Controller.GestionCommandes;
 import framework.Model.ImageModel;
 
 public class UndoCommand implements Command {
 
-    protected CommandController commandController;
+    protected GestionCommandes gestionCommandes;
     protected ImageModel image;
 
-    public UndoCommand(CommandController iC, ImageModel iM){
-        this.commandController = iC;
+    public UndoCommand(GestionCommandes iC, ImageModel iM){
+        this.gestionCommandes = iC;
         this.image = iM;
     }
 

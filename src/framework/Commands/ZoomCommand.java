@@ -1,15 +1,15 @@
 package framework.Commands;
 
-import framework.Controller.CommandController;
+import framework.Controller.GestionCommandes;
 import framework.Model.ImageModel;
 
 public class ZoomCommand implements Command {
 
-    protected CommandController commandController;
+    protected GestionCommandes gestionCommandes;
     protected ImageModel image;
 
-    public ZoomCommand(CommandController iC, ImageModel iM){
-        this.commandController = iC;
+    public ZoomCommand(GestionCommandes iC, ImageModel iM){
+        this.gestionCommandes = iC;
         this.image = iM;
     }
 

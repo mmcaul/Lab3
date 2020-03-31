@@ -1,6 +1,6 @@
 package framework;
 
-import framework.Controller.CommandController;
+import framework.Controller.GestionCommandes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,8 +24,8 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                CommandController commandController = CommandController.getInstance();
-                commandController.handle();
+                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
+                gestionCommandes.handle();
             }
         }
 
@@ -36,7 +36,7 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                CommandController commandController = CommandController.getInstance();
+                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
             }
         }
         itemSave.addActionListener(new SaveMenuListener());
@@ -58,8 +58,8 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                CommandController commandController = CommandController.getInstance();
-                commandController.handle();
+                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
+                gestionCommandes.handle();
             }
         }
 
@@ -70,8 +70,8 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                CommandController commandController = CommandController.getInstance();
-                commandController.handle();
+                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
+                gestionCommandes.handle();
             }
         }
         itemMove.addActionListener(new MoveMenuListener());
@@ -81,8 +81,8 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                CommandController commandController = CommandController.getInstance();
-                commandController.handle();
+                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
+                gestionCommandes.handle();
             }
         }
 

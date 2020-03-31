@@ -6,15 +6,15 @@ import framework.Model.ImageModel;
 
 import javax.swing.*;
 
-public class CommandController {
+public class GestionCommandes {
 
     Memento memento;
     Command command;
 
     // Singleton
-    private static CommandController instance = new CommandController();
-    private CommandController(){};
-    public static CommandController getInstance(){
+    private static GestionCommandes instance = new GestionCommandes();
+    private GestionCommandes(){};
+    public static GestionCommandes getInstance(){
         return instance;
     }
 
