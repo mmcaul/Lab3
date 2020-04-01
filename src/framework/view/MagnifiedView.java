@@ -1,4 +1,6 @@
 package framework.view;
 
-public class MagnifiedView {
+public class MagnifiedView extends View{
+
+
 }

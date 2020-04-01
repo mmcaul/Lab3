@@ -1,4 +1,6 @@
 package framework.view;
 
-public class ThumbnailView {
+public class ThumbnailView extends View {
+
+
 }

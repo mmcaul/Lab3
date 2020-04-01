@@ -1,25 +1,13 @@
 package framework.model;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
+import framework.MonObservable;
 
-public class ImageModel extends Model{
+import javax.swing.*;
+
+public class ImageModel extends MonObservable {
 
     String imagePath = "BabyYoda.jpg";
-    ImageIcon picture;
-
-    public ImageModel() throws IOException {
-        picture = new ImageIcon(imagePath);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-
-
-    }
+    ImageIcon picture = new ImageIcon(imagePath);
 
     public ImageIcon getPicture(){
         return picture;

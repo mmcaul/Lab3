@@ -48,48 +48,8 @@ public class Menu extends JMenuBar {
 
         menu = new JMenu("Edit");
 
-        JMenuItem itemZoom = new JMenuItem("Zoom");
-        JMenuItem itemMove = new JMenuItem("Move");
         JMenuItem itemUndo = new JMenuItem("Undo");
 
-        // Action Listener pour zoom in et out de l'image
-        class ZoomMenuListener implements ActionListener{
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
-                gestionCommandes.handle();
-            }
-        }
-
-        itemZoom.addActionListener(new ZoomMenuListener());
-
-        // Action Listener pour faire bouger l'image sur l'écran
-        class MoveMenuListener implements ActionListener{
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
-                gestionCommandes.handle();
-            }
-        }
-        itemMove.addActionListener(new MoveMenuListener());
-
-        // Action Listener pour defaire un changement
-        class UndoMenuListener implements ActionListener{
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GestionCommandes gestionCommandes = GestionCommandes.getInstance();
-                gestionCommandes.handle();
-            }
-        }
-
-        itemMove.addActionListener(new UndoMenuListener());
-
-        menu.add(itemZoom);
-        menu.add(itemMove);
         menu.add(itemUndo);
 
         add(menu);

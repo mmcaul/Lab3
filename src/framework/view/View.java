@@ -9,4 +9,7 @@ abstract class View implements MonObserver {
 
     }
 
+
+
+
 }

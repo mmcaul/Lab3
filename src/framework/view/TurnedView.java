@@ -1,4 +1,6 @@
 package framework.view;
 
-public class TurnedView {
+public class TurnedView extends View {
+
+
 }

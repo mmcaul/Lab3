@@ -1,4 +1,6 @@
 package framework.view;
 
-public class ChangingView {
+public class ChangingView extends View{
+
+
 }
