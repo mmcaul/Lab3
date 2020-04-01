@@ -1,6 +1,6 @@
 package framework;
 
-import framework.Controller.GestionCommandes;
+import framework.controller.GestionCommandes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

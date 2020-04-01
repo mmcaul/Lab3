@@ -1,4 +1,4 @@
-package framework.Commands;
+package framework.commands;
 
 public interface Memento {
 

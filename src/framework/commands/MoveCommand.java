@@ -1,7 +1,7 @@
-package framework.Commands;
+package framework.commands;
 
-import framework.Controller.GestionCommandes;
-import framework.Model.ImageModel;
+import framework.controller.GestionCommandes;
+import framework.model.ImageModel;
 
 public class MoveCommand implements Command {
 

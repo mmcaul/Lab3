@@ -1,8 +1,8 @@
-package framework.Controller;
+package framework.controller;
 
-import framework.Commands.Command;
-import framework.Commands.Memento;
-import framework.Model.ImageModel;
+import framework.commands.Command;
+import framework.commands.Memento;
+import framework.model.ImageModel;
 
 import javax.swing.*;
 
