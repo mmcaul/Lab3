@@ -1,6 +1,6 @@
 package framework.model;
 
-import framework.MonObservable;
+import framework.observer.MonObservable;
 
 import javax.swing.*;
 

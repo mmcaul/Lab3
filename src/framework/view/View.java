@@ -1,6 +1,6 @@
 package framework.view;
 
-import framework.MonObserver;
+import framework.observer.MonObserver;
 
 abstract class View implements MonObserver {
 

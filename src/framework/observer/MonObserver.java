@@ -1,4 +1,4 @@
-package framework;
+package framework.observer;
 
 public interface MonObserver {
 
