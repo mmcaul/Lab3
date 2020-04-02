@@ -4,8 +4,9 @@ import framework.controller.GestionCommandes;
 import framework.model.ImageModel;
 
 import javax.swing.*;
+import java.awt.event.MouseEvent;
 
-public class OpenCommand implements Command{
+public class OpenCommand implements Command {
 
     protected GestionCommandes gestionCommandes;
     protected ImageModel image;
@@ -19,8 +20,7 @@ public class OpenCommand implements Command{
     public void handle(){
 
         JLabel label = new JLabel(image.getPicture());
-        //frame.add(label);
+
 
     }
-
 }
