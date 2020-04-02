@@ -4,7 +4,6 @@ import framework.controller.GestionCommandes;
 import framework.model.ImageModel;
 
 import javax.swing.*;
-import java.awt.event.MouseEvent;
 
 public class OpenCommand implements Command {
 
