@@ -6,22 +6,41 @@ import framework.observer.MonObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.event.*;
 
-public class ChangingView extends JPanel implements MonObserver {
+public class ChangingView extends JPanel implements MonObserver{
 
     protected ImageModel imageModel;
     protected JLabel changingImage;
     protected GestionCommandes gestionCommandes;
+    protected JFrame frame;
+    protected JPanel panel;
+    private int xPos=900, yPos=900;
 
     public ChangingView(){
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setTitle("Changing Frame");
         gestionCommandes = GestionCommandes.getInstance();
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(900,900);
+        frame.setSize(xPos,yPos);
         frame.setLayout(new BorderLayout());
+
+        //panel = new JPanel();
+        setPreferredSize(new Dimension(xPos, xPos));
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                xPos = e.getX();
+                yPos = e.getY();
+            }
+        });
+        addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                frame.setLocation(frame.getX()+e.getX()-xPos,frame.getY()+e.getY()-yPos);
+            }
+        });
 
         frame.add(this);
         frame.setVisible(true);
@@ -61,6 +80,5 @@ public class ChangingView extends JPanel implements MonObserver {
 
         frame.setVisible(true);
     }
-
 
 }

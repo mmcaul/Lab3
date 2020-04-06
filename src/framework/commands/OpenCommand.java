@@ -7,17 +7,16 @@ public class OpenCommand implements Command {
 
     protected GestionCommandes gestionCommandes;
 
-    public OpenCommand(){
-        //this.gestionCommandes = iC;
+    public OpenCommand(GestionCommandes gC){
+        this.gestionCommandes = gC;
     }
 
     @Override
     public void handle(){
 
         ChangingView changingView = new ChangingView();
-        gestionCommandes.setChangingView(changingView);
         changingView.init();
-        //gestionCommandes.addChangingPanel(changingView);
+        gestionCommandes.setChangingView(changingView);
 
     }
 }

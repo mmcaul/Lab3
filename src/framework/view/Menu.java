@@ -25,11 +25,8 @@ public class Menu extends JMenuBar {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
-                gestionCommandes.executeCommand(new OpenCommand());
-                //Command openCommand = new OpenCommand(gestionCommandes);
-                //openCommand.handle();
+                gestionCommandes.executeCommand(new OpenCommand(gestionCommandes));
             }
         }
 
