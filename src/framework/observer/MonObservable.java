@@ -1,8 +1,9 @@
 package framework.observer;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
-public class MonObservable {
+public class MonObservable extends JComponent {
 
     ArrayList<MonObserver> observerList = new ArrayList<MonObserver>();
 

@@ -1,5 +1,7 @@
-package framework;
+package framework.view;
 
+import framework.commands.Command;
+import framework.commands.OpenCommand;
 import framework.controller.GestionCommandes;
 
 import javax.swing.*;
@@ -25,7 +27,9 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
 
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
-                gestionCommandes.handle();
+                gestionCommandes.executeCommand(new OpenCommand());
+                //Command openCommand = new OpenCommand(gestionCommandes);
+                //openCommand.handle();
             }
         }
 
