@@ -53,6 +53,7 @@ public class FenetrePrincipale extends JFrame{
 	BufferedImage img;
 	ImageIcon imIcon;
 	
+	private File selectedFileSave;
 	private JFileChooser saveFile;
 	BufferedImage saveImg;
 	int[][] pixels;
@@ -110,7 +111,7 @@ public class FenetrePrincipale extends JFrame{
 			}			
 		});
 				
-		/*
+		
 		save.addActionListener((ActionEvent e) -> {
 			
 			saveFile = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -119,15 +120,22 @@ public class FenetrePrincipale extends JFrame{
 			int returnValue = saveFile.showSaveDialog(null);
 			
 			if(returnValue == JFileChooser.APPROVE_OPTION) {
-				selectedFile = saveFile.getSelectedFile();
-					
-				ImageIO.write(saveImg, "png", selectedFile);
+				
+				selectedFileSave = saveFile.getSelectedFile();
+				
+				try {	
+					Icon icon = image.getIcon();
+					BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
+					Graphics g = bi.createGraphics();
+					icon.paintIcon(null, g, 0, 0);
+					g.dispose();
+					ImageIO.write(bi, "png", selectedFileSave);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
-		*/
+		
 		exit.addActionListener((ActionEvent e) -> {
 			
 			System.exit(0);
