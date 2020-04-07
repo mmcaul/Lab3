@@ -1,6 +1,6 @@
 package command;
 
-public class TranslateCommand {
+public class TranslateCommand implements Command{
 
 	public void execute() {
 		

@@ -1,6 +1,6 @@
 package command;
 
-public class ZoomInCommand {
+public class ZoomInCommand implements Command{
 
 	public void execute() {
 		
