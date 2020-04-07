@@ -46,12 +46,12 @@ public class FenetrePrincipale extends JFrame{
 	private File selectedFile;
 	private JScrollPane scroll;
 	
-	JLabel image;
-	BufferedImage img;
-	Image dimg;
-	ImageIcon imIcon;
+	int newWidth;
+	int newHeight;
 	
-	String path;	
+	JLabel image = null;
+	BufferedImage img;
+	ImageIcon imIcon;
 	
 	private JFileChooser saveFile;
 	BufferedImage saveImg;
@@ -63,9 +63,14 @@ public class FenetrePrincipale extends JFrame{
 	 */
 	public FenetrePrincipale() {
 		
-		j = new JFrame();		
+		j = new JFrame();
 		
-		//creating image panel
+		// creating scrollPane
+		scroll = new JScrollPane();
+		
+		
+		
+		// creating image panel
 		jpanel = new JPanel();
 		jpanel.setLayout(new BorderLayout());
 		image = new JLabel(" ");
@@ -93,12 +98,12 @@ public class FenetrePrincipale extends JFrame{
 			
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				selectedFile = fileChooser.getSelectedFile();
-				path = selectedFile.getAbsolutePath();
 				try {
-					img = ImageIO.read(new File(path));
-					dimg = img.getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_SMOOTH);
-					imIcon = new ImageIcon(dimg);
+					img = ImageIO.read(selectedFile);
+					imIcon = new ImageIcon(img);
 					image.setIcon(imIcon);
+					newWidth = image.getWidth();
+					newHeight = image.getHeight();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -151,15 +156,16 @@ public class FenetrePrincipale extends JFrame{
 		
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				int point = e.getWheelRotation();
-				if (point < 0) {
-					zoomIn();
-					e.getUnitsToScroll();
-				} else {
-					zoomOut();
-					e.getUnitsToScroll();
-				}
-			}
+
+					int point = e.getWheelRotation();
+					if (point < 0) {
+						zoomIn();
+						e.getUnitsToScroll();
+					} else {
+						zoomOut();
+						e.getUnitsToScroll();
+					}
+			}				
 		});
 		
 	}
@@ -174,22 +180,30 @@ public class FenetrePrincipale extends JFrame{
 	}
 	
 	public void zoomIn() {
-		try {
-			Image temp = ImageIO.read(selectedFile);
-			ImageIcon ic = new ImageIcon(resize(image.getWidth() + 100, image.getHeight() + 100, temp));
-			image.setIcon(ic);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (selectedFile != null) {
+			try {
+				newWidth = newWidth + 100;
+				newHeight = newWidth + 100;
+				Image temp = ImageIO.read(selectedFile);
+				ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
+				image.setIcon(ic);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void zoomOut() {
-		try {
-			Image temp = ImageIO.read(selectedFile);
-			ImageIcon ic = new ImageIcon(resize(image.getWidth() - 100, image.getHeight() - 100, temp));
-			image.setIcon(ic);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (selectedFile != null) {
+			try {
+				newWidth = newWidth - 100;
+				newHeight = newHeight - 100;
+				Image temp = ImageIO.read(selectedFile);
+				ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
+				image.setIcon(ic);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
