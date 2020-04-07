@@ -91,6 +91,7 @@ public class FenetrePrincipale extends JFrame{
 		save = new JMenuItem("Save");
 		exit = new JMenuItem("Quitter");
 		
+		// open menu
 		open.addActionListener((ActionEvent e) -> {
 			
 			fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -105,11 +106,14 @@ public class FenetrePrincipale extends JFrame{
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				selectedFile = fileChooser.getSelectedFile();
 				try {
+					// afficher l'image choisie
 					img = ImageIO.read(selectedFile);
 					imIcon = new ImageIcon(img);
 					image.setIcon(imIcon);
 					newWidth = image.getWidth();
 					newHeight = image.getHeight();
+					initX = image.getLocation().x;
+					initY = image.getLocation().y;
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -117,6 +121,7 @@ public class FenetrePrincipale extends JFrame{
 		});
 				
 		
+		// save menu
 		save.addActionListener((ActionEvent e) -> {
 			
 			saveFile = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -128,21 +133,23 @@ public class FenetrePrincipale extends JFrame{
 				
 				selectedFileSave = saveFile.getSelectedFile();
 				
-				try {	
+				try {
+					// rendre le JLabel en BufferedImage pour le sauvegarder
 					Icon icon = image.getIcon();
 					BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
 					Graphics g = bi.createGraphics();
 					icon.paintIcon(null, g, 0, 0);
 					g.dispose();
+					
+					// sauvegarder
 					ImageIO.write(bi, "png", selectedFileSave);
-					initX = image.getLocation().x;
-					initY = image.getLocation().y;
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
 		
+		// exit menu
 		exit.addActionListener((ActionEvent e) -> {
 			
 			System.exit(0);
@@ -183,21 +190,22 @@ public class FenetrePrincipale extends JFrame{
 			}				
 		});
 		
-		
+		// initialisation du click
 		jpanel.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
+			// la position initiale du click sur l'image
 			@Override
 			public void mousePressed(MouseEvent e) {
 				initialClick = e.getPoint();
 				
 			}
 
+			// sauvegarder la position de position de la relache du click
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				initX = image.getX();
@@ -207,13 +215,11 @@ public class FenetrePrincipale extends JFrame{
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}  
 		});
@@ -231,6 +237,7 @@ public class FenetrePrincipale extends JFrame{
 				int x = initX + difX;
 				int y = initY + difY;
 				
+				// redessiner l'image selon la position de la souris
 				image.setLocation(x,y);
 				image.repaint();
 			}
@@ -238,6 +245,7 @@ public class FenetrePrincipale extends JFrame{
 		
 	}
 	
+	// resize
 	public Image resize(int width, int height, Image img) {
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2 = bi.createGraphics();
@@ -247,14 +255,21 @@ public class FenetrePrincipale extends JFrame{
 		return bi;
 	}
 	
+	// zoom in
 	public void zoomIn() {
 		if (selectedFile != null) {
 			try {
+				
+				// agrandissement de 100 en x et y
 				newWidth = newWidth + 100;
 				newHeight = newWidth + 100;
+				
+				// redessiner l'image selon la nouvelle grandeur
 				Image temp = ImageIO.read(selectedFile);
 				ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
 				image.setIcon(ic);
+				
+				// positionnement de l'image pour le mouvement
 				initX = image.getLocation().x;
 				initY = image.getLocation().y;
 			} catch (IOException e) {
@@ -263,15 +278,24 @@ public class FenetrePrincipale extends JFrame{
 		}
 	}
 	
+	// zoom out
 	public void zoomOut() {
 		if (selectedFile != null) {
 			try {
+				
+				// tant que l'imagine ne deviendra pas negatif
 				if (newWidth > 100) {
+					
+					// reduit l'image de 100 en x et y
 					newWidth = newWidth - 100;
 					newHeight = newHeight - 100;
+					
+					// redessiner l'image selon la nouvelle grandeur
 					Image temp = ImageIO.read(selectedFile);
 					ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
 					image.setIcon(ic);
+					
+					// positionnement de l'image pour le mouvement
 					initX = image.getLocation().x;
 					initY = image.getLocation().y;
 				}
