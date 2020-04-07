@@ -38,7 +38,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleSave();
+                //commandController.handleSave();
             }
         }
         itemSave.addActionListener(new SaveMenuListener());
@@ -61,7 +61,7 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
 
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleZoom();
+                //commandController.handleZoom();
             }
         }
 
@@ -73,7 +73,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommandController commandController = CommandController.getInstance();
-                commandController.handleMove();
+                //commandController.handleMove();
             }
         }
         itemMove.addActionListener(new MoveMenuListener());
