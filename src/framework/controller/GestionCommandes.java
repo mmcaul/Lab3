@@ -7,9 +7,6 @@ import framework.model.PerspectiveModel;
 import framework.view.*;
 
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 public class GestionCommandes {
 
@@ -26,10 +23,8 @@ public class GestionCommandes {
     JFrame frame;
     int xPos, yPos;
 
-    ImageModel image;
-    PerspectiveModel imageThumbnail;
-    PerspectiveModel imageMagnified;
-    PerspectiveModel imageTurned;
+    ImageModel imageM;
+    PerspectiveModel imageP;
 
     ChangingView changingView;
     ThumbnailView thumbnailView;
@@ -45,7 +40,11 @@ public class GestionCommandes {
     }
 
     public void setImageModel(ImageModel iM){
-        this.image = iM;
+        this.imageM = iM;
+    }
+
+    public void setPerspectiveModel(PerspectiveModel pM){
+        this.imageP = pM;
     }
 
     public void executeCommand(Command c){
