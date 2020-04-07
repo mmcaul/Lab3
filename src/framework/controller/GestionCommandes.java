@@ -21,15 +21,15 @@ public class GestionCommandes {
 
     // Controller
     JFrame frame;
-    int xPos, yPos;
+    public int xPos, yPos;
 
-    ImageModel imageM;
-    PerspectiveModel imageP;
+    public ImageModel imageM;
+    public PerspectiveModel imageP;
 
-    ChangingView changingView;
-    ThumbnailView thumbnailView;
-    MagnifiedView magnifiedView;
-    TurnedView turnedView;
+    public ChangingView changingView;
+    public ThumbnailView thumbnailView;
+    public  MagnifiedView magnifiedView;
+    public TurnedView turnedView;
 
     public void setFrame(JFrame f){
         this.frame = f;

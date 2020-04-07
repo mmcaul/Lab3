@@ -28,7 +28,7 @@ public class MagnifiedView extends JPanel implements MonObserver {
         frame.setLayout(new BorderLayout());
 
         setPreferredSize(new Dimension(xPos, xPos));
-        addMouseListener(new MouseAdapter() {
+        /*addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 xPos = e.getX();
@@ -40,7 +40,7 @@ public class MagnifiedView extends JPanel implements MonObserver {
             public void mouseDragged(MouseEvent e) {
                 frame.setLocation(frame.getX()+e.getX()-xPos,frame.getY()+e.getY()-yPos);
             }
-        });
+        });*/
 
         frame.add(this);
         frame.setVisible(true);
@@ -63,7 +63,7 @@ public class MagnifiedView extends JPanel implements MonObserver {
 
     @Override
     public void update(){
-
+    	imageMagnified.repaint();
     }
 
 }

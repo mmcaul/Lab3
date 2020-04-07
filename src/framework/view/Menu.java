@@ -40,6 +40,7 @@ public class Menu extends JMenuBar {
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
             }
         }
+        
         itemSave.addActionListener(new SaveMenuListener());
 
         menu.add(itemOpen);
