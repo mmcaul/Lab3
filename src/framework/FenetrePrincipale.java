@@ -1,5 +1,6 @@
 package framework;
 
+import java.awt.Point;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,6 +8,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
@@ -44,7 +48,6 @@ public class FenetrePrincipale extends JFrame{
 	private JPanel jpanel;
 	private JFileChooser fileChooser;
 	private File selectedFile;
-	private JScrollPane scroll;
 	
 	int newWidth;
 	int newHeight;
@@ -58,6 +61,9 @@ public class FenetrePrincipale extends JFrame{
 	BufferedImage saveImg;
 	int[][] pixels;
 	
+	Point initialClick;
+	int initX, initY;
+	
 	/*
 	 * Inspire de https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel/16345968#16345968
 	 * et de https://stackoverflow.com/questions/17219129/how-to-use-jfilechooser-to-display-image-in-a-jpanel
@@ -67,7 +73,6 @@ public class FenetrePrincipale extends JFrame{
 		j = new JFrame();
 		
 		// creating scrollPane
-		scroll = new JScrollPane();
 		
 		
 		
@@ -130,6 +135,8 @@ public class FenetrePrincipale extends JFrame{
 					icon.paintIcon(null, g, 0, 0);
 					g.dispose();
 					ImageIO.write(bi, "png", selectedFileSave);
+					initX = image.getLocation().x;
+					initY = image.getLocation().y;
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -159,7 +166,7 @@ public class FenetrePrincipale extends JFrame{
 		j.setLocationRelativeTo(null);
 		j.setResizable(false);
 		
-		
+		// zoom in, zoom out
 		jpanel.addMouseWheelListener(new MouseWheelListener(){
 		
 			@Override
@@ -174,6 +181,59 @@ public class FenetrePrincipale extends JFrame{
 						e.getUnitsToScroll();
 					}
 			}				
+		});
+		
+		
+		jpanel.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				initialClick = e.getPoint();
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				initX = image.getX();
+				initY = image.getY();
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}  
+		});
+		
+		// inspired https://stackoverflow.com/questions/26227046/moving-image-with-mouse-java
+		jpanel.addMouseMotionListener(new MouseMotionAdapter() {
+			
+			public void mouseDragged(MouseEvent e) {
+				
+				// Mouvement de la souris
+				int difX = e.getX() - initialClick.x;
+				int difY = e.getY() - initialClick.y;
+				
+				// Bouge l'image
+				int x = initX + difX;
+				int y = initY + difY;
+				
+				image.setLocation(x,y);
+				image.repaint();
+			}
 		});
 		
 	}
@@ -195,6 +255,8 @@ public class FenetrePrincipale extends JFrame{
 				Image temp = ImageIO.read(selectedFile);
 				ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
 				image.setIcon(ic);
+				initX = image.getLocation().x;
+				initY = image.getLocation().y;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -204,11 +266,15 @@ public class FenetrePrincipale extends JFrame{
 	public void zoomOut() {
 		if (selectedFile != null) {
 			try {
-				newWidth = newWidth - 100;
-				newHeight = newHeight - 100;
-				Image temp = ImageIO.read(selectedFile);
-				ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
-				image.setIcon(ic);
+				if (newWidth > 100) {
+					newWidth = newWidth - 100;
+					newHeight = newHeight - 100;
+					Image temp = ImageIO.read(selectedFile);
+					ImageIcon ic = new ImageIcon(resize(newWidth, newHeight, temp));
+					image.setIcon(ic);
+					initX = image.getLocation().x;
+					initY = image.getLocation().y;
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
