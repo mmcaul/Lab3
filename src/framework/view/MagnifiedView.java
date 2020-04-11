@@ -6,18 +6,31 @@ import framework.observer.MonObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: MagnifiedView.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
 
 public class MagnifiedView extends JPanel implements MonObserver {
 
     protected PerspectiveModel imageModel;
-    protected JLabel imageThumbnail, imageMagnified, imageTurned;
+    protected JLabel imageMagnified;
     protected GestionCommandes gestionCommandes;
     protected JFrame frame;
-    private int xPos=900, yPos=900;
+    private int xPos=700, yPos=700;
 
+    /**
+     * Constructeur par défault
+     */
     public MagnifiedView(){
         frame = new JFrame();
         frame.setTitle("Magnified Frame");
@@ -28,24 +41,14 @@ public class MagnifiedView extends JPanel implements MonObserver {
         frame.setLayout(new BorderLayout());
 
         setPreferredSize(new Dimension(xPos, xPos));
-        /*addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                xPos = e.getX();
-                yPos = e.getY();
-            }
-        });
-        addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                frame.setLocation(frame.getX()+e.getX()-xPos,frame.getY()+e.getY()-yPos);
-            }
-        });*/
 
         frame.add(this);
         frame.setVisible(true);
     }
 
+    /**
+     * Initialise le frame de l'image magnifer
+     */
     public void init(){
         Dimension d = new Dimension(600, 600);
         setSize(d);
@@ -61,6 +64,9 @@ public class MagnifiedView extends JPanel implements MonObserver {
 
     }
 
+    /**
+     * Met à jour l'image
+     */
     @Override
     public void update(){
     	imageMagnified.repaint();

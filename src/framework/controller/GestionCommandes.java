@@ -8,6 +8,19 @@ import framework.view.*;
 
 import javax.swing.*;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: GestionCommandes.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
+
 public class GestionCommandes {
 
     Memento memento;
@@ -21,7 +34,6 @@ public class GestionCommandes {
 
     // Controller
     JFrame frame;
-    public int xPos, yPos;
 
     public ImageModel imageM;
     public PerspectiveModel imageP;

@@ -6,18 +6,31 @@ import framework.observer.MonObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: TurnedView.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
 
 public class TurnedView extends JPanel implements MonObserver {
 
     protected PerspectiveModel imageModel;
-    protected JLabel imageThumbnail, imageMagnified, imageTurned;
+    protected JLabel imageTurned;
     protected GestionCommandes gestionCommandes;
     protected JFrame frame;
-    private int xPos=900, yPos=900;
+    private int xPos=500, yPos=500;
 
+    /**
+     * Constructeur par default
+     */
     public TurnedView(){
         frame = new JFrame();
         frame.setTitle("Turned Frame");
@@ -28,26 +41,16 @@ public class TurnedView extends JPanel implements MonObserver {
         frame.setLayout(new BorderLayout());
 
         setPreferredSize(new Dimension(xPos, xPos));
-        /*addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                xPos = e.getX();
-                yPos = e.getY();
-            }
-        });
-        addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                frame.setLocation(frame.getX()+e.getX()-xPos,frame.getY()+e.getY()-yPos);
-            }
-        });*/
 
         frame.add(this);
         frame.setVisible(true);
     }
 
+    /**
+     * Initialise le frame pour l'image tourne
+     */
     public void init(){
-        Dimension d = new Dimension(600, 600);
+        Dimension d = new Dimension(400, 400);
         setSize(d);
         setMinimumSize(d);
         setMaximumSize(d);
@@ -60,6 +63,10 @@ public class TurnedView extends JPanel implements MonObserver {
         add(imageTurned);
 
     }
+
+    /**
+     * Met a jour l'image
+     */
     @Override
     public void update(){
     	imageTurned.repaint();

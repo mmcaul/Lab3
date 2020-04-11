@@ -11,21 +11,35 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: ChangingView.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
+
 public class ChangingView extends JPanel implements MonObserver{
 
     protected ImageModel imageModel;
     protected JLabel changingImage;
     protected GestionCommandes gestionCommandes = GestionCommandes.getInstance();
     protected JFrame frame;
-    protected JPanel panel;
     private int xPos=900, yPos=900;
 
     private Point initialClick;
     private int initX, initY;
-    private int x, y;
-    private int width, height;
-    
-    public ChangingView(){
+    private int x, width, y, height;
+
+	/**
+	 * Constructeur par défault
+	 */
+	public ChangingView(){
         frame = new JFrame();
         frame.setTitle("Changing Frame");
 
@@ -33,14 +47,18 @@ public class ChangingView extends JPanel implements MonObserver{
         frame.setSize(xPos,yPos);
         frame.setLayout(new BorderLayout());
 
-        //panel = new JPanel();
         setPreferredSize(new Dimension(xPos, xPos));
         
         
         // zoom in and out of image
         addMouseWheelListener(new MouseWheelListener() {
-        	
-        	@Override
+
+			/**
+			 * Appel à la command zoomIn et zoomOut lorsque la
+			 * roulette de la souris est activé
+			 * @param e : MouseWheelEvent
+			 */
+			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
 
 					int point = e.getWheelRotation();
@@ -65,7 +83,10 @@ public class ChangingView extends JPanel implements MonObserver{
 				
 			}
 
-			// la position initiale du click sur l'image
+			/**
+			 * Permet de connaitre le point initale du click
+			 * @param e : MouseEvent
+			 */
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
@@ -73,7 +94,10 @@ public class ChangingView extends JPanel implements MonObserver{
 				
 			}
 
-			// sauvegarder la position de position de la relache du click
+			/**
+			 * Sauvegarde la nouvelle position de la souris après le click
+			 * @param e : MouseEvent
+			 */
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				
@@ -94,7 +118,11 @@ public class ChangingView extends JPanel implements MonObserver{
 		
 		// inspired https://stackoverflow.com/questions/26227046/moving-image-with-mouse-java
 		addMouseMotionListener(new MouseMotionAdapter() {
-			
+
+			/**
+			 * Parcours la distance lorsqu'un click est initialisé
+			 * @param e : MouseEvent
+			 */
 			public void mouseDragged(MouseEvent e) {
 				
 				// Mouvement de la souris
@@ -115,7 +143,10 @@ public class ChangingView extends JPanel implements MonObserver{
         frame.setVisible(true);
     }
 
-    public void init(){
+	/**
+	 * Initialise le frame de l'image pouvant être modifier
+	 */
+	public void init(){
         Dimension d = new Dimension(600, 600);
         setSize(d);
         setMinimumSize(d);
@@ -129,30 +160,17 @@ public class ChangingView extends JPanel implements MonObserver{
         add(changingImage);
     }
 
-
+	/**
+	 * Actualise l'image lorsqu'il y a un changement
+	 */
     @Override
     public void update(){
         //If frame changes size, picture changes with it and all other picture frames too
     	width = gestionCommandes.changingView.changingImage.getWidth();
     	height = gestionCommandes.changingView.changingImage.getHeight();
-    	
-    	
-    	
+
         //If frame moves, all other frames move too
     	gestionCommandes.changingView.changingImage.setLocation(x,y);
     }
-
-   /* public static void main(String[] args) {
-        JFrame frame = new JFrame();
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
-
-        ChangingView changingView = new ChangingView();
-
-        frame.add(changingView);
-
-        frame.setVisible(true);
-    }*/
 
 }

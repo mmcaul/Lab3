@@ -4,11 +4,23 @@ import framework.observer.MonObservable;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: PerspectiveModel.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
 
 public class PerspectiveModel extends MonObservable implements Image {
 
@@ -26,6 +38,9 @@ public class PerspectiveModel extends MonObservable implements Image {
     ImageIcon pictureTurned = new ImageIcon(imagePathTurned);
     BufferedImage imageTurned;
 
+    /**
+     * Constructeur par défault
+     */
     public PerspectiveModel(){
 
         try{
@@ -37,53 +52,15 @@ public class PerspectiveModel extends MonObservable implements Image {
         }
     }
 
+    /**
+     * Méthode qui retourne un ArrayList contenant
+     * toutes les perspectives d'images
+     * @return ArrayList<ImageIcon>
+     */
     public ArrayList<ImageIcon> getPicture(){
         arrayImage.add(pictureThumbnail);
         arrayImage.add(pictureMagnified);
         arrayImage.add(pictureTurned);
         return arrayImage;
     }
-
-    /*public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(imageThumbnail, 3, 4, this);
-        g.drawImage(imageMagnified, 3, 4, this);
-        g.drawImage(imageTurned, 3, 4, this);
-    }*/
-
-
-    /**
-     * Main servant a tester la classe perspectiveModel pour l'eventuel affichage
-     * @param args : String[]
-     */
-   /*
-   public static void main(String[] args) {
-        JFrame frameThumbnail = new JFrame();
-        JFrame frameTurned = new JFrame();
-
-        frameThumbnail.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frameThumbnail.setSize(90,75);
-
-        frameTurned.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frameTurned.setSize(600,600);
-
-        JPanel panelThumbnail = new JPanel();
-        JPanel panelTurned = new JPanel();
-
-        PerspectiveModel model = new PerspectiveModel();
-        JLabel labelThumbnail = new JLabel(model.getPictureThumbnail());
-        //JLabel labelMagnefied = new JLabel(model.getPictureMagnified());
-        JLabel labelTurned = new JLabel(model.getPictureTurned());
-
-        panelThumbnail.add(labelThumbnail);
-        //panel.add(labelMagnefied);
-        panelTurned.add(labelTurned);
-
-        frameThumbnail.add(panelThumbnail);
-        frameTurned.add(panelTurned);
-
-        frameThumbnail.setVisible(true);
-        frameTurned.setVisible(true);
-    }*/
-
 }
