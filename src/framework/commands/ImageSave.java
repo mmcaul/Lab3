@@ -10,6 +10,6 @@ public class ImageSave implements Memento {
 
     @Override
     public void restore() {
-
+    	
     }
 }
