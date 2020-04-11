@@ -6,9 +6,19 @@ import framework.observer.MonObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: ThumbnailView.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-04-07
+ *******************************************************/
 
 public class ThumbnailView extends JPanel implements MonObserver {
 
@@ -18,6 +28,9 @@ public class ThumbnailView extends JPanel implements MonObserver {
     protected JFrame frame;
     private int xPos=90, yPos=100;
 
+    /**
+     * Constructeur par défault
+     */
     public ThumbnailView(){
         frame = new JFrame();
         frame.setTitle("Thumbnail Frame");
@@ -28,24 +41,14 @@ public class ThumbnailView extends JPanel implements MonObserver {
         frame.setLayout(new BorderLayout());
 
         setPreferredSize(new Dimension(xPos, xPos));
-        /*addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                xPos = e.getX();
-                yPos = e.getY();
-            }
-        });
-        addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                frame.setLocation(frame.getX()+e.getX()-xPos,frame.getY()+e.getY()-yPos);
-            }
-        });*/
 
         frame.add(this);
         frame.setVisible(true);
     }
 
+    /**
+     * Initialise un frame pour l'image thumbnail
+     */
     public void init(){
         Dimension d = new Dimension(100, 100);
         setSize(d);
@@ -58,12 +61,11 @@ public class ThumbnailView extends JPanel implements MonObserver {
         gestionCommandes.setPerspectiveModel(imageModel);
         imageThumbnail = new JLabel(imageModel.getPicture().get(0));
         add(imageThumbnail);
-        //imageMagnified = new JLabel(imageModel.getPicture().get(1));
-        //add(imageMagnified);
-        //imageTurned = new JLabel(imageModel.getPicture().get(2));
-        //add(imageTurned);
-
     }
+
+    /**
+     * Met a jour l'image
+     */
     @Override
     public void update(){
     	imageThumbnail.repaint();

@@ -1,6 +1,5 @@
 package framework.view;
 
-import framework.commands.Command;
 import framework.commands.OpenCommand;
 import framework.controller.GestionCommandes;
 
@@ -14,6 +13,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #3
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: Menu.java
+ Date créé: 2020-03-19
+ Date dern. modif. 2020-03-20
+ *******************************************************/
+
 public class Menu extends JMenuBar {
 
     JMenu menu;
@@ -25,6 +37,9 @@ public class Menu extends JMenuBar {
 
     JLabel image = null;
 
+    /**
+     * Constructeur par défault
+     */
     public Menu(){
 
         // Cree l'affichage pour le menu et les elements contenu a l'interieur
@@ -36,6 +51,10 @@ public class Menu extends JMenuBar {
         // Action Listener pour ouvrir une nouvelle image
         class OpenMenuListener implements ActionListener{
 
+            /**
+             * Quand l'utilisateur click sur "Open"
+             * @param e : ActionEvent
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
@@ -48,6 +67,10 @@ public class Menu extends JMenuBar {
         // Action Listener pour enregistrer l'image
         class SaveMenuListener implements ActionListener{
 
+            /**
+             * Quand l'utilisateur click sur "Save"
+             * @param e : ActionEvent
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
@@ -93,5 +116,4 @@ public class Menu extends JMenuBar {
         add(menu);
 
     }
-
 }
