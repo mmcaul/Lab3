@@ -35,8 +35,6 @@ public class Menu extends JMenuBar {
     int newWidth;
     int newHeight;
 
-    JLabel image = null;
-
     /**
      * Constructeur par défault
      */
@@ -85,7 +83,11 @@ public class Menu extends JMenuBar {
 
                     try {
                         // rendre le JLabel en BufferedImage pour le sauvegarder
-                        Icon icon = image.getIcon();
+                    	
+                        Icon icon = (Icon) gestionCommandes.changingView.changingImage.getIcon();
+                    	newWidth = gestionCommandes.changingView.changingImage.getWidth();
+                    	newHeight = gestionCommandes.changingView.changingImage.getHeight();
+                    	
                         BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
                         Graphics g = bi.createGraphics();
                         icon.paintIcon(null, g, 0, 0);

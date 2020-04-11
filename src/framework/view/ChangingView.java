@@ -32,9 +32,9 @@ public class ChangingView extends JPanel implements MonObserver{
     protected JFrame frame;
     private int xPos=900, yPos=900;
 
-    private Point initialClick;
-    private int initX, initY;
-    private int x, width, y, height;
+    protected Point initialClick;
+    protected int initX, initY;
+    protected int x, width, y, height;
 
 	/**
 	 * Constructeur par défault
@@ -48,8 +48,6 @@ public class ChangingView extends JPanel implements MonObserver{
         frame.setLayout(new BorderLayout());
 
         setPreferredSize(new Dimension(xPos, xPos));
-        
-        
         // zoom in and out of image
         addMouseWheelListener(new MouseWheelListener() {
 

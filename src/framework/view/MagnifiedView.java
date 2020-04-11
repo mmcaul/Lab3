@@ -70,6 +70,7 @@ public class MagnifiedView extends JPanel implements MonObserver {
     @Override
     public void update(){
     	imageMagnified.repaint();
+    	
     }
 
 }

@@ -49,4 +49,11 @@ public class ImageModel extends MonObservable implements Image{
         arrayImage.add(picture);
         return arrayImage;
     }
+    
+    /**
+     * 
+     */
+    public ImageIcon getIcon() {
+    	return picture;
+    }
 }
