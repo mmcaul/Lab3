@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class ZoomInCommand implements Command {
 
-    int newWidth, initX;
-    int newHeight, initY;
+    int newWidth;
+    int newHeight;
 
     JLabel image = null;
     File selectedFile;

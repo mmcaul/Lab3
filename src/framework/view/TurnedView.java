@@ -13,10 +13,10 @@ import java.awt.event.MouseMotionAdapter;
 public class TurnedView extends JPanel implements MonObserver {
 
     protected PerspectiveModel imageModel;
-    protected JLabel imageThumbnail, imageMagnified, imageTurned;
+    protected JLabel imageTurned;
     protected GestionCommandes gestionCommandes;
     protected JFrame frame;
-    private int xPos=900, yPos=900;
+    private int xPos=500, yPos=500;
 
     public TurnedView(){
         frame = new JFrame();
@@ -47,7 +47,7 @@ public class TurnedView extends JPanel implements MonObserver {
     }
 
     public void init(){
-        Dimension d = new Dimension(600, 600);
+        Dimension d = new Dimension(400, 400);
         setSize(d);
         setMinimumSize(d);
         setMaximumSize(d);

@@ -4,7 +4,6 @@ import framework.observer.MonObservable;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,12 +14,21 @@ public class ImageModel extends MonObservable implements Image{
     ArrayList<ImageIcon> arrayImage = new ArrayList<>();
     String imagePath = "BabyYoda.jpg";
     ImageIcon picture = new ImageIcon(imagePath);
-    BufferedImage image;
+    BufferedImage img;
+    JLabel image = null;
+
+    int newWidth, newHeight, initX, initY;;
 
     public ImageModel(){
 
         try{
-            image = ImageIO.read(new File(imagePath));
+            img = ImageIO.read(new File(imagePath));
+            /*picture = new ImageIcon(img);
+            image.setIcon(picture);
+            newWidth = image.getWidth();
+            newHeight = image.getHeight();
+            initX = image.getLocation().x;
+            initY = image.getLocation().y;*/
         } catch(IOException ie){
             ie.printStackTrace();
         }

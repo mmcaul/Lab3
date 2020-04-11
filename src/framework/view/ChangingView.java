@@ -33,7 +33,6 @@ public class ChangingView extends JPanel implements MonObserver{
         frame.setSize(xPos,yPos);
         frame.setLayout(new BorderLayout());
 
-        //panel = new JPanel();
         setPreferredSize(new Dimension(xPos, xPos));
         
         
@@ -141,18 +140,5 @@ public class ChangingView extends JPanel implements MonObserver{
         //If frame moves, all other frames move too
     	gestionCommandes.changingView.changingImage.setLocation(x,y);
     }
-
-   /* public static void main(String[] args) {
-        JFrame frame = new JFrame();
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
-
-        ChangingView changingView = new ChangingView();
-
-        frame.add(changingView);
-
-        frame.setVisible(true);
-    }*/
 
 }

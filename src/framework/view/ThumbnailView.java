@@ -13,10 +13,10 @@ import java.awt.event.MouseMotionAdapter;
 public class ThumbnailView extends JPanel implements MonObserver {
 
     protected PerspectiveModel imageModel;
-    protected JLabel imageThumbnail, imageMagnified, imageTurned;
+    protected JLabel imageThumbnail;
     protected GestionCommandes gestionCommandes;
     protected JFrame frame;
-    private int xPos=900, yPos=900;
+    private int xPos=90, yPos=100;
 
     public ThumbnailView(){
         frame = new JFrame();
@@ -47,7 +47,7 @@ public class ThumbnailView extends JPanel implements MonObserver {
     }
 
     public void init(){
-        Dimension d = new Dimension(600, 600);
+        Dimension d = new Dimension(100, 100);
         setSize(d);
         setMinimumSize(d);
         setMaximumSize(d);

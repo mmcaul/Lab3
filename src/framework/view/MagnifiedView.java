@@ -13,10 +13,10 @@ import java.awt.event.MouseMotionAdapter;
 public class MagnifiedView extends JPanel implements MonObserver {
 
     protected PerspectiveModel imageModel;
-    protected JLabel imageThumbnail, imageMagnified, imageTurned;
+    protected JLabel imageMagnified;
     protected GestionCommandes gestionCommandes;
     protected JFrame frame;
-    private int xPos=900, yPos=900;
+    private int xPos=700, yPos=700;
 
     public MagnifiedView(){
         frame = new JFrame();

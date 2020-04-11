@@ -4,13 +4,26 @@ import framework.commands.Command;
 import framework.commands.OpenCommand;
 import framework.controller.GestionCommandes;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Menu extends JMenuBar {
 
     JMenu menu;
+    private File selectedFileSave;
+    private JFileChooser saveFile;
+
+    int newWidth;
+    int newHeight;
+
+    JLabel image = null;
 
     public Menu(){
 
@@ -38,6 +51,29 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GestionCommandes gestionCommandes = GestionCommandes.getInstance();
+                saveFile = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+                saveFile.setDialogTitle("Save Image");
+
+                int returnValue = saveFile.showSaveDialog(null);
+
+                if(returnValue == JFileChooser.APPROVE_OPTION) {
+
+                    selectedFileSave = saveFile.getSelectedFile();
+
+                    try {
+                        // rendre le JLabel en BufferedImage pour le sauvegarder
+                        Icon icon = image.getIcon();
+                        BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
+                        Graphics g = bi.createGraphics();
+                        icon.paintIcon(null, g, 0, 0);
+                        g.dispose();
+
+                        // sauvegarder
+                        ImageIO.write(bi, "png", selectedFileSave);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
             }
         }
         
