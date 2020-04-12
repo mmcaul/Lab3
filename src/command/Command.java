@@ -1,7 +1,10 @@
 package command;
 
-public interface Command {
+import framework.FenetrePrincipale;
+import java.io.Serializable;
 
+
+public interface Command {
 	public void execute();
 	
 }

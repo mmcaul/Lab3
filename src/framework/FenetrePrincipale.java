@@ -1,5 +1,8 @@
 package framework;
 
+import command.Command;
+import command.CommandHistory;
+
 import java.awt.Point;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -36,34 +39,34 @@ import javax.swing.filechooser.FileSystemView;
 
 
 public class FenetrePrincipale extends JFrame{
+	private CommandHistory history = new CommandHistory();
+	public final int ZOOMLEVEL = 10;
+	public final int WIDTH = 800;
+	public final int HEIGHT = 800;
 	
-	private final int ZOOMLEVEL = 10;
-	private final int WIDTH = 800;
-	private final int HEIGHT = 800;
+	public JFrame j;
+	public JMenu jmenu;
+	public JMenuBar jbar;
+	public JMenuItem open, save, exit;
+	public JPanel jpanel;
+	public JFileChooser fileChooser;
+	public File selectedFile;
 	
-	private JFrame j;
-	private JMenu jmenu;
-	private JMenuBar jbar;
-	private JMenuItem open, save, exit;
-	private JPanel jpanel;
-	private JFileChooser fileChooser;
-	private File selectedFile;
-	
-	int newWidth;
-	int newHeight;
+	public int newWidth;
+	public int newHeight;
 	
 	JLabel image = null;
 	BufferedImage img;
 	ImageIcon imIcon;
 	
-	private File selectedFileSave;
-	private JFileChooser saveFile;
-	BufferedImage saveImg;
-	int[][] pixels;
+	public File selectedFileSave;
+	public JFileChooser saveFile;
+	public BufferedImage saveImg;
+	public int[][] pixels;
 	
-	Point initialClick;
-	int initX, initY;
-	
+	public Point initialClick;
+	public int initX, initY;
+
 	/*
 	 * Inspire de https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel/16345968#16345968
 	 * et de https://stackoverflow.com/questions/17219129/how-to-use-jfilechooser-to-display-image-in-a-jpanel
@@ -280,6 +283,8 @@ public class FenetrePrincipale extends JFrame{
 			}
 		}
 	}
+
+
 	
 	// zoom out
 	public void zoomOut() {
@@ -305,6 +310,14 @@ public class FenetrePrincipale extends JFrame{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	private void undo() {
+		if (history.isEmpty()) return;
+
+		Command command = history.pop();
+		if (command != null) {
+			command.undo();
 		}
 	}
 }

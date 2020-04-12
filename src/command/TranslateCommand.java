@@ -1,8 +1,14 @@
 package command;
 
-public class TranslateCommand implements Command{
+import framework.FenetrePrincipale;
+
+public class TranslateCommand extends ConcreteCommand{
+
+	TranslateCommand(FenetrePrincipale fenetre) {
+		super(fenetre);
+	}
 
 	public void execute() {
-		
+		fenetre.saveImg.
 	}
 }
