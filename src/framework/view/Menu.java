@@ -93,7 +93,7 @@ public class Menu extends JMenuBar {
                         icon.paintIcon(null, g, 0, 0);
                         g.dispose();
 
-                        // sauvegarder
+                        // sauvegarder, il faut rajouter .png a la fin du nom pour le sauvegarder sous un fichier png
                         ImageIO.write(bi, "png", selectedFileSave);
                     } catch (IOException e1) {
                         e1.printStackTrace();
